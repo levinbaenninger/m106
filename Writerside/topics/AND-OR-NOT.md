@@ -57,14 +57,14 @@ WHERE City = 'Berlin' OR City = 'Stuttgart';
 Alle Kunden, die **nicht** aus Deutschland kommen
 
 ````SQL
-SELECT * FROM Customers
+SELECT * FROM Customer
 WHERE NOT Country = 'Germany';
 ````
 
 ### Kombination - Beispiel
 
 ````SQL
-SELECT * FROM Customers
+SELECT * FROM Customer
 WHERE Country = 'Germany' AND (City = 'Berlin' OR City = 'Stuttgart');
 ````
 

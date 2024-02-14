@@ -43,7 +43,7 @@ In folgendem Beispiel erstellen wir eine Tabelle namens `Person` mit verschieden
 
 `````SQL
 CREATE TABLE Person (
-    PersonId int,
+    PersonID int,
     LastName varchar(50),
     FirstName varchar(50),
     Address varchar(50),

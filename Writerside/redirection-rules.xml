@@ -14,4 +14,8 @@
         <description>Created after removal of "DDL" from Modul 106</description>
         <accepts>DDL.html</accepts>
     </rule>
+    <rule id="38e6aa79">
+        <description>Created after removal of "GROUP BY" from Modul 106</description>
+        <accepts>GROUP-BY.html</accepts>
+    </rule>
 </rules>

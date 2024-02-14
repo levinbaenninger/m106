@@ -19,13 +19,13 @@ ORDER BY column1, column2, ... ASC|DESC;
 ### Aufsteigende Reihenfolge
 
 ````SQL
-SELECT * FROM Customers
+SELECT * FROM Customer
 ORDER BY Country;
 ````
 
 ### Absteigende Reihenfolge
 
 ````SQL
-SELECT * FROM Customers
+SELECT * FROM Customer
 ORDER BY Country DESC;
 ````

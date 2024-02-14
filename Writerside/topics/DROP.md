@@ -37,6 +37,6 @@ DROP TABLE table_name;
 In folgendem Beispiel löschen wir eine Tabelle namens `Shippers` und all die darin enthaltenen Daten.
 
 `````SQL
-DROP TABLE Shippers;
+DROP TABLE Shipper;
 `````
 
