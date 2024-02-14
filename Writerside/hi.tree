@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="hi" name="Modul 106"
+                  start-page="Struktur-und-Daten-einer-DB-verändern.md">
+
+    <toc-element topic="Struktur-und-Daten-einer-DB-verändern.md">
+        <toc-element toc-title="DDL" >
+            <toc-element topic="CREATE.md"/>
+            <toc-element topic="ALTER.md">
+            </toc-element>
+            <toc-element topic="DROP.md"/>
+        </toc-element>
+        <toc-element toc-title="DML" >
+            <toc-element topic="INSERT.md"/>
+            <toc-element topic="UPDATE.md"/>
+            <toc-element topic="DELETE.md"/>
+        </toc-element>
+        <toc-element toc-title="DQL">
+            <toc-element topic="SELECT.md">
+                <toc-element topic="SELECT-DISTINCT.md"/>
+                <toc-element topic="WHERE.md">
+                    <toc-element topic="AND-OR-NOT.md"/>
+                </toc-element>
+                <toc-element topic="ORDER-BY.md"/>
+            </toc-element>
+        </toc-element>
+    </toc-element>
+    <toc-element topic="Datentypen.md">
+        <toc-element topic="Ganzzahlen.md"/>
+        <toc-element topic="Fliesskommazahlen.md"/>
+        <toc-element topic="Textformate.md"/>
+        <toc-element topic="Datum-Zeit.md"/>
+        <toc-element topic="Weitere-Datentypen.md"/>
+    </toc-element>
+    <toc-element topic="Datenmigration.md">
+        <toc-element topic="Export-in-Dump-File.md"/>
+        <toc-element topic="Import-aus-Dump-File.md"/>
+    </toc-element>
+</instance-profile>
