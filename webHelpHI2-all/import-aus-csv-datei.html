@@ -1,0 +1,39 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-colors-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2024-02-15T09:31:32.8147232"><title>Import aus CSV-Datei | Modul 106</title><script type="application/json" id="virtual-toc-data">[{"id":"syntax-csv-import","level":0,"title":"Syntax - CSV-Import","anchor":"#syntax-csv-import"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.6.6-b205/app.css" rel="stylesheet"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><link rel="manifest" href="site.webmanifest"><meta name="msapplication-TileColor" content="#000000"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Import aus CSV-Datei | Modul 106"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Modul 106 Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="import-aus-csv-datei.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Import aus CSV-Datei | Modul 106"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "import-aus-csv-datei.html#webpage",
+    "url": "import-aus-csv-datei.html",
+    "name": "Import aus CSV-Datei | Modul 106",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "/#website",
+    "url": "/",
+    "name": "Modul 106 Help"
+}</script><!-- End Schema.org --></head><body data-id="Import-aus-CSV-Datei" data-main-title="Import aus CSV-Datei" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Datenmigration.md|Datenmigration"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Modul 106  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Import-aus-CSV-Datei" id="Import-aus-CSV-Datei.md">Import aus CSV-Datei</h1><p id="cccb2da0_19">Am h&auml;ufigsten werden Daten aus einer CSV-Datei in eine Datenbank migriert. Daf&uuml;r gibt uns MySQL einige Tools an die Hand. Jedoch m&uuml;ssen davor einige Vorbereitungen getroffen werden.</p><section class="chapter"><h2 id="syntax-csv-import" data-toc="syntax-csv-import">Syntax - CSV-Import</h2><section class="chapter"><h3 id="dateipfad" data-toc="dateipfad">Dateipfad</h3><p id="cccb2da0_20">Als Erstes m&uuml;ssen wir herausfinden, wo wir die zu importierenden Dateien ablegen m&uuml;ssen. Dazu nutzen wir folgenden Query:</p><div class="code-block" data-lang="sql">
+SHOW VARIABLES LIKE 'secure_file_priv';
+</div><p id="cccb2da0_22">In dem daraus resultierenden Pfad m&uuml;ssen wir unsere Dateien ablegen.</p></section><section class="chapter"><h3 id="alte-daten-l-schen" data-toc="alte-daten-l-schen">Alte Daten l&ouml;schen</h3><p id="cccb2da0_23">Als N&auml;chstes m&uuml;ssen bzw. k&ouml;nnen wir alle Tabellen leeren. Dabei sollte man ein wenig auf die Reihenfolge achten: Zuerst Child-Tabellen leeren, danach Parent-Tabelle.</p><div class="code-block" data-lang="sql">
+DELETE FROM person;
+DELETE FROM firma;
+DELETE FROM ort;
+</div><p id="cccb2da0_25">Gleichzeitig k&ouml;nnen wir, wenn n&ouml;tig, <code class="code" id="cccb2da0_26">AUTO_INCREMENT</code> auf 1 zur&uuml;cksetzen. Dies verhindert, dass beim Import der Daten noch alte Foreign Keys referenziert werden.</p><div class="code-block" data-lang="sql">
+ALTER TABLE person AUTO_INCREMENT = 1;
+ALTER TABLE firma AUTO_INCREMENT = 1;
+ALTER TABLE ort AUTO_INCREMENT = 1;
+</div></section><section class="chapter"><h3 id="foreign-key-check-ausschalten" data-toc="foreign-key-check-ausschalten">Foreign-Key Check ausschalten</h3><p id="cccb2da0_28">Um beim Import nicht mit Fehlern, bez&uuml;glich Relationen bombadiert zu werden, sagen wir, dass Foreign-Keys nicht &uuml;berpr&uuml;ft werden sollen:</p><div class="code-block" data-lang="sql">
+SET foreign_key_checks = 0;
+</div></section><section class="chapter"><h3 id="import" data-toc="import">Import</h3><p id="cccb2da0_30">Beim Import selbst m&uuml;ssen wir ein paar Parameter festlegen, bspw. den Pfad, oder den Zeichensatz:</p><div class="code-block" data-lang="sql">
+LOAD DATA INFILE 
+'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\firmen.csv' -- Path des Infiles
+INTO TABLE firma 			                                    -- Tabelle in der Datenbank
+CHARACTER SET utf8mb4 		                                    -- Codierung in der Datenbank -&gt; Wichtig das im CSV auch auf UTF8 eingestellt ist
+FIELDS TERMINATED BY ';' 	                                    -- Trennzeichen zweier Werte im CSV
+LINES TERMINATED BY '\r\n'	                                    -- Zeilenumbruch im CSV
+ignore 1 rows 				                                    -- Erste Zeile mit Attributen soll nicht geladen werden
+(id, firmenname, Inhaber, ort_id);				                -- Namen wie in Datenbank, Reihenfolge wie in CSV
+</div></section><section class="chapter"><h3 id="foreign-key-check-aktivieren" data-toc="foreign-key-check-aktivieren">Foreign-Key Check aktivieren</h3><p id="cccb2da0_32">Nachdem alle Files importiert wurden, aktivieren wir den Foreign-Key Check wieder:</p><div class="code-block" data-lang="sql">
+SET foreign_key_checks = 1;
+</div></section></section><div class="last-modified">Last modified: 15 Februar 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="import-aus-dump-file.html" class="navigation-links__prev">Import aus Dump File</a><a href="datenschutz-und-berechtigungen.html" class="navigation-links__next">Datenschutz und Berechtigungen</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.6.6-b205/app.js"></script></body></html>

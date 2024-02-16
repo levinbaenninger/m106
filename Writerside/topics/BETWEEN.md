@@ -2,7 +2,7 @@
 
 Mit dem `BETWEEN`-Operator können wir Werte in einem bestimmten Wertebereich auswählen. Das können Zahlen, Texte oder Daten sein.
 
-> Der Operator ist inklusiv, heisst Start und Ende sind auch im Wertebereich
+> Der Operator ist teilweise inklusiv, heisst der Startwert ist auch im Wertebereich
 
 ## BETWEEN - Syntax
 

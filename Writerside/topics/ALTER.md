@@ -63,3 +63,20 @@ In diesem Beispiel ändern wir den Datentypen von `DateOfBirth` von `DATE` auf `
 ALTER TABLE Person
 MODIFY COLUMN DateOfBirth YEAR;
 ````
+
+## Attribut umbenennen
+
+### Syntax - Attribut umbenennen
+
+````SQL
+ALTER TABLE table_name
+CHANGE oldColumnName newColumnName dataType;
+````
+
+### Beispiele - Attribut umbenennen
+
+````SQL
+ALTER TABLE Person
+CHANGE Name Surname VARCHAR(45);
+````
+

@@ -60,5 +60,34 @@
         </toc-element>
         <toc-element topic="Import-aus-CSV-Datei.md"/>
     </toc-element>
+    <toc-element topic="Datenschutz-und-Berechtigungen.md">
+        <toc-element toc-title="Benutzer" >
+            <toc-element topic="Benutzer-erstellen.md"/>
+            <toc-element topic="Benutzer-löschen.md"/>
+        </toc-element>
+        <toc-element toc-title="Berechtigungen" >
+            <toc-element topic="Zugriffsrechte-vergeben.md"/>
+            <toc-element topic="Zugriffsrechte-entziehen.md"/>
+        </toc-element>
+    </toc-element>
+    <toc-element topic="JOINS-und-Aggregationsfunktionen.md">
+        <toc-element topic="Aliasse.md"/>
+        <toc-element toc-title="JOIN" >
+            <toc-element topic="INNER-JOIN.md"/>
+            <toc-element topic="LEFT-JOIN.md"/>
+            <toc-element topic="RIGHT-JOIN.md"/>
+        </toc-element>
+        <toc-element toc-title="Aggregatsfunktionen" >
+            <toc-element topic="COUNT.md"/>
+            <toc-element topic="AVG.md"/>
+            <toc-element topic="SUM.md"/>
+            <toc-element topic="MIN.md"/>
+            <toc-element topic="MAX.md">
+            </toc-element>
+        </toc-element>
+        <toc-element topic="GROUP-BY.md"/>
+        <toc-element topic="HAVING.md"/>
+    </toc-element>
+    <toc-element topic="Unterabfragen.md"/>
     <toc-element topic="Namenskonventionen.md"/>
 </instance-profile>
