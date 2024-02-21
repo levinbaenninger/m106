@@ -89,5 +89,18 @@
         <toc-element topic="HAVING.md"/>
     </toc-element>
     <toc-element topic="Unterabfragen.md"/>
+    <toc-element topic="Transaktionen.md">
+        <toc-element topic="Transaktionen-implementieren.md"/>
+    </toc-element>
+    <toc-element topic="Datenbank-optimieren.md">
+        <toc-element topic="Performancerelevante-Faktoren.md"/>
+        <toc-element topic="Performance-messen.md"/>
+        <toc-element topic="Datenbankinformationen-auslesen.md"/>
+        <toc-element toc-title="Performance Impacts" >
+            <toc-element topic="Fragmentierung.md"/>
+            <toc-element topic="Resultatgrösse.md"/>
+            <toc-element topic="Komplexe-Queries.md"/>
+        </toc-element>
+    </toc-element>
     <toc-element topic="Namenskonventionen.md"/>
 </instance-profile>
