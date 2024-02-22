@@ -9,8 +9,8 @@
 
 - Attributnamen im Singular
 - PascalCase
-- Primärschlüssel: TabelleID
-- Fremdschlüssel: ParentTabelleID
+- Primärschlüssel: TabelleId
+- Fremdschlüssel: ParenttabelleId
 
 ## Constraints
 
@@ -19,3 +19,4 @@
 - Check: CK_Tabelle_Beschreibung
 - Default: DF_Tabelle_Attributname
 - Unique: UQ_Tabelle_Attributname
+- Index: IDX_Tabelle_Attributname
