@@ -2,6 +2,10 @@
 
 Am häufigsten werden Daten aus einer CSV-Datei in eine Datenbank migriert. Dafür gibt uns MySQL einige Tools an die Hand. Jedoch müssen davor einige Vorbereitungen getroffen werden.
 
+> **Wichtig:** Das CSV-File muss in der UTF-8 Codierung sein. Darüber hinaus darf es nicht UTF-8-BOM sein, da BOM mit den meisten Binaries nicht kompatibel ist.
+
+{ style="warning" }
+
 ## Syntax - CSV-Import
 
 ### Dateipfad
